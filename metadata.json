@@ -1,0 +1,12 @@
+{
+  "name": "Remix Remix  28/10/26Jhadimadi.com - ঝাদিমাদি ডটকম ",
+  "description": "On-demand Hyperlocal Home Services, CHT Organic E-Commerce \u0026 Logistics Super-App Platform for Rangamati, Khagrachhari, Bandarban \u0026 Bangladesh.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

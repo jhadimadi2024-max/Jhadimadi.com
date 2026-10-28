@@ -1,0 +1,102 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[edge_functions]]
+  path = "/shop/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/seller/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/merchant/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/store/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/seller-profile*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/provider/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/sp/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/sp-profile*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/service-provider/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/member/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/pm/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/pm-profile*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/donor/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/blood-donor/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/profile/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/user/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/product/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/products/*"
+  function = "og-meta"
+
+[[edge_functions]]
+  path = "/p/*"
+  function = "og-meta"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+

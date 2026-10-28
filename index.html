@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+    <!-- Mobile Status Bar Sync with App Top Header (#004700) & White Status Bar Icons -->
+    <meta name="theme-color" content="#004700" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#004700" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#004700" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Jhadimadi" />
+    <link rel="manifest" href="/manifest.json" />
+    <!-- Primary Meta Tags (Dynamic Canonical & OG synced without static homepage override) -->
+    <title>Jhadimadi.com - ঝাদিমাদি ডটকম</title>
+    <meta name="title" content="Jhadimadi.com - ঝাদিমাদি ডটকম" />
+    <meta name="description" content="On-demand Hyperlocal Home Services, CHT Organic E-Commerce & Logistics." />
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="type" content="website" />
+    <meta property="og:title" content="Jhadimadi.com - ঝাদিমাদি ডটকম" />
+    <meta property="og:description" content="On-demand Hyperlocal Home Services, CHT Organic E-Commerce & Logistics." />
+    <meta property="og:image" content="https://dwhsqftllkximhfvwqak.supabase.co/storage/v1/object/public/media/FB_IMG_1748768753514.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jhadimadi.com - ঝাদিমাদি ডটকম" />
+    <meta name="twitter:description" content="On-demand Hyperlocal Home Services, CHT Organic E-Commerce & Logistics." />
+    <meta name="twitter:image" content="https://dwhsqftllkximhfvwqak.supabase.co/storage/v1/object/public/media/FB_IMG_1748768753514.jpg" />
+
+    <!-- Early Instant Dynamic Canonical & OG URL Sync (Never overwrites SSR-injected OG metadata) -->
+    <script>
+      (function() {
+        try {
+          if (window.__SSR_OG_INJECTED__) return;
+          var p = window.location.pathname || '';
+          var origin = (window.location.origin && window.location.origin.indexOf('localhost') === -1)
+            ? window.location.origin.replace(/^https?:\/\/www\./i, 'https://')
+            : 'https://jhadimadi.com';
+          var activeUrl = origin + (p === '/' ? '/' : p);
+
+          var canLink = document.querySelector('link[rel="canonical"]');
+          if (!canLink) {
+            canLink = document.createElement('link');
+            canLink.setAttribute('rel', 'canonical');
+            document.head.appendChild(canLink);
+          }
+          canLink.setAttribute('href', activeUrl);
+
+          var ogUrl = document.querySelector('meta[property="og:url"]');
+          if (!ogUrl) {
+            ogUrl = document.createElement('meta');
+            ogUrl.setAttribute('property', 'og:url');
+            document.head.appendChild(ogUrl);
+          }
+          ogUrl.setAttribute('content', activeUrl);
+
+          var twUrl = document.querySelector('meta[name="twitter:url"]');
+          if (!twUrl) {
+            twUrl = document.createElement('meta');
+            twUrl.setAttribute('name', 'twitter:url');
+            document.head.appendChild(twUrl);
+          }
+          twUrl.setAttribute('content', activeUrl);
+        } catch (_) {}
+      })();
+    </script>
+    
+    <!-- Instant Preload for Brand Logo to Eliminate Cold-Start Latency -->
+    <link rel="preload" as="image" href="/runner-logo-hires.png" fetchpriority="high" />
+
+    <!-- OneSignal Web Push SDK v16 -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+    <!-- Instant App Shell Styling & Strict Mobile-App-Only Pre-Paint Gate -->
+    <style>
+      html, body {
+        background-color: #faf9f6;
+        margin: 0;
+        padding: 0;
+      }
+      html.splash-active,
+      html.splash-active body {
+        background-color: #000000 !important;
+        overflow: hidden !important;
+      }
+    </style>
+    <script>
+      (function() {
+        try {
+          var SESSION_KEY = 'jhadimadi_app_startup_splash_shown_v2';
+          var p = (window.location.pathname || '').toLowerCase();
+          var h = (window.location.hash || '').toLowerCase();
+          var isAdmin = p === '/admin' || p.indexOf('/admin/') === 0 || p === '/admin-portal' || p.indexOf('/admin-portal/') === 0 || h === '#admin' || h === '#admin-portal';
+
+          var search = window.location.search || '';
+          var sp = new URLSearchParams(search);
+          var platformParam = (sp.get('platform') || '').toLowerCase();
+          var forceWeb = platformParam === 'web' || sp.get('web') === '1';
+
+          var isNativeApp = false;
+          if (!forceWeb) {
+            var proto = (window.location.protocol || '').toLowerCase();
+            var ua = window.navigator.userAgent || '';
+            var isSocialInApp = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger|Line\/|MicroMessenger|Twitter|LinkedInApp|Snapchat|TikTok|BytedanceWebview|Pinterest|WhatsApp/i.test(ua);
+
+            if (
+              window.__IS_NATIVE_MOBILE_APP__ === true ||
+              platformParam === 'app' ||
+              platformParam === 'android' ||
+              platformParam === 'ios' ||
+              sp.get('native_app') === '1' ||
+              sp.get('app_mode') === 'true' ||
+              (window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform()) ||
+              window.cordova || window.PhoneGap || window.Ionic ||
+              proto === 'capacitor:' || proto === 'ionic:' || proto === 'app:' || proto === 'file:' ||
+              window.ReactNativeWebView ||
+              window.flutter_inappwebview || window.FlutterChannel || window._flutter ||
+              window.AndroidBridge || window.Android || window.android ||
+              window.median || window.gonative ||
+              (window.webkit && window.webkit.messageHandlers && Object.keys(window.webkit.messageHandlers).length > 0)
+            ) {
+              isNativeApp = true;
+            } else if (!isSocialInApp) {
+              var isMobileOS = /Android|iPhone|iPad|iPod/i.test(ua) || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
+              var isStandalone = window.navigator.standalone === true ||
+                (window.matchMedia && (window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches));
+              var isTwa = (document.referrer || '').indexOf('android-app://') === 0;
+              var isDedicatedAndroidWv = /;\s*wv\)/i.test(ua);
+              var isDedicatedIosWv = /(iPhone|iPod|iPad).*AppleWebKit/i.test(ua) && !/Safari\//i.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo/i.test(ua);
+
+              if (isTwa || (isMobileOS && isStandalone) || isDedicatedAndroidWv || isDedicatedIosWv) {
+                isNativeApp = true;
+              }
+            }
+          }
+
+          window.__JHADIMADI_IS_MOBILE_APP__ = isNativeApp;
+          var shouldShowSplash = false;
+
+          if (isNativeApp && !isAdmin) {
+            var forceReplay = sp.get('replay_splash') === '1';
+            var alreadyShown = false;
+            try {
+              alreadyShown = sessionStorage.getItem(SESSION_KEY) === '1';
+              if (!alreadyShown || forceReplay) {
+                sessionStorage.setItem(SESSION_KEY, '1');
+                shouldShowSplash = true;
+              }
+            } catch (_) {
+              shouldShowSplash = true;
+            }
+          }
+
+          window.__JHADIMADI_SHOULD_SHOW_SPLASH__ = shouldShowSplash;
+
+          if (shouldShowSplash) {
+            document.documentElement.classList.add('splash-active');
+            var metas = document.querySelectorAll('meta[name="theme-color"]');
+            for (var i = 0; i < metas.length; i++) {
+              metas[i].setAttribute('content', '#000000');
+            }
+            // Immediately dismiss any default OS/framework splash so ONLY the Netflix-style Jhadimadi intro appears
+            try {
+              if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SplashScreen) {
+                window.Capacitor.Plugins.SplashScreen.hide({ fadeOutDuration: 0 });
+              }
+              if (window.navigator && window.navigator.splashscreen && window.navigator.splashscreen.hide) {
+                window.navigator.splashscreen.hide();
+              }
+              if (window.AndroidBridge && window.AndroidBridge.hideSplashScreen) {
+                window.AndroidBridge.hideSplashScreen();
+              }
+            } catch (_) {}
+          }
+        } catch (_) {
+          window.__JHADIMADI_IS_MOBILE_APP__ = false;
+          window.__JHADIMADI_SHOULD_SHOW_SPLASH__ = false;
+        }
+      })();
+    </script>
+    
+    <!-- Early Safe Fetch Polyfill, Error Interceptor, Unload Event Modernization & Global Config -->
+    <script>
+      (function() {
+        // -1. Early Error Interceptor: Gracefully traps and suppresses sandboxed iframe getter-only fetch assignment errors
+        try {
+          var isFetchGetterError = function(msg) {
+            if (!msg) return false;
+            var str = String(msg);
+            return str.indexOf('Cannot set property fetch') !== -1 ||
+                   str.indexOf('which has only a getter') !== -1;
+          };
+
+          window.addEventListener('error', function(event) {
+            var msg = event && (event.message || (event.error && event.error.message));
+            if (isFetchGetterError(msg)) {
+              if (typeof event.preventDefault === 'function') event.preventDefault();
+              if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+              return true;
+            }
+          }, true);
+
+          var prevOnError = window.onerror;
+          window.onerror = function(msg, source, lineno, colno, error) {
+            var errorMsg = String(msg || (error && error.message) || '');
+            if (isFetchGetterError(errorMsg)) {
+              return true; // suppresses uncaught error reporting in browser/sandbox
+            }
+            if (typeof prevOnError === 'function') {
+              return prevOnError.apply(this, arguments);
+            }
+            return false;
+          };
+
+          window.addEventListener('unhandledrejection', function(event) {
+            var reason = event && event.reason;
+            var msg = typeof reason === 'string' ? reason : (reason && reason.message) || '';
+            if (isFetchGetterError(msg)) {
+              if (typeof event.preventDefault === 'function') event.preventDefault();
+              return true;
+            }
+          }, true);
+        } catch (_) {}
+
+        // Safe Iframe Shims for window.alert, window.confirm, and window.open to prevent sandbox SecurityError
+        try {
+          var originalAlert = window.alert;
+          window.alert = function(msg) {
+            try {
+              if (originalAlert) originalAlert.call(window, msg);
+            } catch (_) {
+              console.info('[Alert Shim]:', msg);
+            }
+          };
+
+          var originalConfirm = window.confirm;
+          window.confirm = function(msg) {
+            try {
+              if (originalConfirm) return originalConfirm.call(window, msg);
+            } catch (_) {
+              console.info('[Confirm Shim]:', msg);
+              return true;
+            }
+            return true;
+          };
+
+          var originalOpen = window.open;
+          window.open = function(url, target, features) {
+            try {
+              if (originalOpen) return originalOpen.call(window, url, target, features);
+            } catch (_) {
+              console.info('[Open Shim]:', url);
+            }
+            return null;
+          };
+        } catch (_) {}
+
+        // -0.5 Safe Fetch Polyfill for Sandboxed Iframe Previews (sets getter & setter on Window.prototype and window)
+        try {
+          var getTrueNativeFetch = function() {
+            try {
+              if (typeof Window !== 'undefined' && Window.prototype) {
+                var protoDesc = Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+                if (protoDesc && typeof protoDesc.value === 'function') return protoDesc.value.bind(window);
+              }
+              var winDesc = Object.getOwnPropertyDescriptor(window, 'fetch');
+              if (winDesc && typeof winDesc.value === 'function') return winDesc.value.bind(window);
+            } catch (_) {}
+            return (typeof window !== 'undefined' && typeof window.fetch === 'function') ? window.fetch.bind(window) : null;
+          };
+
+          var trueNative = getTrueNativeFetch();
+          if (trueNative) {
+            window.__trueNativeBrowserFetch = trueNative;
+            window.__originalNativeFetch = trueNative;
+          }
+          var nativeFetchRef = window.__trueNativeBrowserFetch || window.__originalNativeFetch || window.fetch;
+          window.__customFetch = window.__customFetch || nativeFetchRef;
+
+          var defineSafeFetch = function(target) {
+            if (!target) return;
+            try {
+              Object.defineProperty(target, 'fetch', {
+                get: function() {
+                  return window.__customFetch || window.__trueNativeBrowserFetch || nativeFetchRef;
+                },
+                set: function(fn) {
+                  if (typeof fn === 'function' && fn !== window.__customFetch) {
+                    window.__customFetch = fn;
+                  }
+                },
+                configurable: true,
+                enumerable: true
+              });
+            } catch (_) {}
+          };
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            defineSafeFetch(Window.prototype);
+          }
+          defineSafeFetch(window);
+        } catch (_) {}
+
+        // 0. Canonical Global Config Initialization with mandatory id and name
+        try {
+          var appCfg = {
+            id: 'jhadimadi-superapp',
+            name: 'Jhadimadi.com - ঝাদিমাদি ডটকম',
+            appId: 'jhadimadi-superapp',
+            appName: 'Jhadimadi.com',
+            projectId: 'jhadimadi-superapp',
+            projectName: 'Jhadimadi.com',
+            title: 'Jhadimadi.com - ঝাদিমাদি ডটকম',
+            short_name: 'Jhadimadi.com',
+            version: '2.5.0',
+            environment: 'production',
+            description: 'On-demand Hyperlocal Home Services, CHT Organic E-Commerce & Logistics Super-App Platform for Rangamati, Khagrachhari, Bandarban & Bangladesh.'
+          };
+          window.__APP_CONFIG__ = appCfg;
+          window.APP_CONFIG = appCfg;
+          window.appConfig = appCfg;
+          window.__CONFIG__ = appCfg;
+          window.tidioIdentify = {
+            id: 'jhadimadi-guest',
+            name: 'Guest Visitor',
+            email: 'guest@jhadimadi.com'
+          };
+          window.tidioConfig = {
+            id: 'rhikfdzcdjdqjewrch3mzvppdtksokyc',
+            name: 'Jhadimadi Live Support'
+          };
+          var defaultGlobalUser = {
+            id: 'admin_master',
+            uid: 'admin_master',
+            name: 'ঝাদিমাদি অ্যাডমিন',
+            phone: '01870592699',
+            role: 'admin',
+            isVerified: true,
+            status: 'Active'
+          };
+          window.userData = defaultGlobalUser;
+          window.user = defaultGlobalUser;
+          if (!window.config || typeof window.config !== 'object') {
+            window.config = Object.assign({}, appCfg);
+          } else {
+            window.config.id = window.config.id || appCfg.id;
+            window.config.name = window.config.name || appCfg.name;
+            window.config.appId = window.config.appId || appCfg.appId;
+            window.config.appName = window.config.appName || appCfg.appName;
+            window.config.projectId = window.config.projectId || appCfg.projectId;
+            window.config.projectName = window.config.projectName || appCfg.projectName;
+            window.config.title = window.config.title || appCfg.title;
+          }
+          // Global early fallback for Bengali digit conversions
+          window.toBnDigit = function(num) {
+            if (num === null || num === undefined) return '';
+            var bn = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return String(num).replace(/[0-9]/g, function(d) { return bn[parseInt(d, 10)] || d; });
+          };
+          window.toEnDigit = function(num) {
+            if (num === null || num === undefined) return '';
+            var map = {'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};
+            return String(num).replace(/[০-৯]/g, function(d) { return map[d] || d; });
+          };
+        } catch (_) {}
+
+        // 1. Unload Event Modernization & Permissions-Policy Shield
+        try {
+          if (!window.__modernUnloadHandlingInstalled && typeof EventTarget !== 'undefined' && EventTarget.prototype) {
+            window.__modernUnloadHandlingInstalled = true;
+            var rawAddEvent = EventTarget.prototype.addEventListener;
+            var rawRemoveEvent = EventTarget.prototype.removeEventListener;
+            var unloadToPagehideMap = new WeakMap();
+
+            EventTarget.prototype.addEventListener = function(type, listener, options) {
+              if (type === 'unload') {
+                try {
+                  var wrappedListener = function(event) {
+                    try {
+                      if (typeof listener === 'function') {
+                        listener.call(this, event);
+                      } else if (listener && typeof listener.handleEvent === 'function') {
+                        listener.handleEvent(event);
+                      }
+                    } catch (_) {}
+                  };
+                  if (typeof listener === 'object' && listener !== null) {
+                    unloadToPagehideMap.set(listener, wrappedListener);
+                  }
+                  return rawAddEvent.call(this, 'pagehide', wrappedListener, options);
+                } catch (_) {
+                  return rawAddEvent.call(this, 'pagehide', listener, options);
+                }
+              }
+              return rawAddEvent.call(this, type, listener, options);
+            };
+
+            EventTarget.prototype.removeEventListener = function(type, listener, options) {
+              if (type === 'unload') {
+                var mapped = (typeof listener === 'object' && listener !== null) ? unloadToPagehideMap.get(listener) : null;
+                return rawRemoveEvent.call(this, 'pagehide', mapped || listener, options);
+              }
+              return rawRemoveEvent.call(this, type, listener, options);
+            };
+          }
+
+          try {
+            Object.defineProperty(window, 'onunload', {
+              configurable: true,
+              enumerable: true,
+              get: function() { return undefined; },
+              set: function(fn) {
+                if (typeof fn === 'function') {
+                  window.addEventListener('pagehide', fn);
+                }
+              }
+            });
+          } catch (_) {}
+
+          try {
+            Object.defineProperty(document, 'onunload', {
+              configurable: true,
+              enumerable: true,
+              get: function() { return undefined; },
+              set: function(fn) {
+                if (typeof fn === 'function') {
+                  window.addEventListener('pagehide', fn);
+                }
+              }
+            });
+          } catch (_) {}
+
+          window.addEventListener('securitypolicyviolation', function(e) {
+            if (e && (e.violatedDirective === 'unload' || e.featureId === 'unload')) {
+              if (typeof e.stopPropagation === 'function') e.stopPropagation();
+            }
+          }, true);
+        } catch (_) {}
+      })();
+    </script>
+    
+    <!-- PWA & Mobile Web App Standalone Full-Screen Edge-to-Edge Meta Tags (Synced with #004700) -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Jhadimadi" />
+    <meta name="application-name" content="Jhadimadi" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#004700" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#004700" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#004700" />
+    <meta name="msapplication-navbutton-color" content="#004700" />
+    <meta name="msapplication-TileColor" content="#004700" />
+    <meta name="navigation-bar-color" content="#004700" />
+    
+    <!-- Native Edge-to-Edge & Status Bar Bridge Script synced to #004700 -->
+    <script>
+      (function() {
+        var BRAND_COLOR = '#004700';
+        var BRAND_BLACK = '#000000';
+        function applyEdgeToEdge() {
+          var isSplash = document.documentElement.classList.contains('splash-active') || (document.body && document.body.classList.contains('splash-active'));
+          var activeColor = isSplash ? BRAND_BLACK : BRAND_COLOR;
+
+          var metaThemes = document.querySelectorAll('meta[name="theme-color"], meta[name="msapplication-navbutton-color"], meta[name="navigation-bar-color"]');
+          metaThemes.forEach(function(el) {
+            el.setAttribute('content', activeColor);
+          });
+
+          try {
+            if (window.median && window.median.statusbar) {
+              window.median.statusbar.set({ style: 'light', color: activeColor, overlay: true });
+            }
+          } catch (e) {}
+
+          try {
+            if (window.ReactNativeWebView && typeof window.ReactNativeWebView.postMessage === 'function') {
+              window.ReactNativeWebView.postMessage(JSON.stringify({
+                type: 'SET_STATUS_BAR',
+                translucent: true,
+                backgroundColor: activeColor,
+                barStyle: 'light-content'
+              }));
+            }
+          } catch (e) {}
+
+          try {
+            if (window.AndroidBridge && typeof window.AndroidBridge.setEdgeToEdge === 'function') {
+              window.AndroidBridge.setEdgeToEdge(true);
+            }
+            if (window.AndroidBridge && typeof window.AndroidBridge.setStatusBarColor === 'function') {
+              window.AndroidBridge.setStatusBarColor(activeColor);
+            }
+            if (window.AndroidBridge && typeof window.AndroidBridge.setNavigationBarColor === 'function') {
+              window.AndroidBridge.setNavigationBarColor(activeColor);
+            }
+          } catch (e) {}
+
+          try {
+            if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.StatusBar) {
+              window.Capacitor.Plugins.StatusBar.setOverlaysWebView({ overlay: true });
+              window.Capacitor.Plugins.StatusBar.setBackgroundColor({ color: activeColor });
+            }
+            if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.NavigationBar) {
+              window.Capacitor.Plugins.NavigationBar.setColor({ color: activeColor });
+            }
+          } catch (e) {}
+          try {
+            if (window.StatusBar) {
+              window.StatusBar.overlaysWebView(true);
+              window.StatusBar.backgroundColorByHexString(activeColor);
+            }
+            if (window.NavigationBar) {
+              window.NavigationBar.backgroundColorByHexString(activeColor);
+            }
+          } catch (e) {}
+        }
+
+        applyEdgeToEdge();
+        window.addEventListener('DOMContentLoaded', applyEdgeToEdge);
+        window.addEventListener('load', applyEdgeToEdge);
+        window.addEventListener('resize', applyEdgeToEdge);
+        window.addEventListener('orientationchange', applyEdgeToEdge);
+        window.__applyEdgeToEdge = applyEdgeToEdge;
+      })();
+    </script>
+    
+    <!-- App Icons & Manifest -->
+    <link rel="preload" as="image" href="/runner-logo-hires.png" fetchpriority="high" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="1024x1024" href="/runner-logo-hires.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/runner-logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/runner-logo.png" />
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/runner-logo-hires.png" />
+    
+    <!-- Safe External Script & Analytics Shield -->
+    <script>
+      (function() {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+        window.tidioChatApi = window.tidioChatApi || {
+          hide: function() {},
+          show: function() {},
+          open: function() {},
+          close: function() {},
+          on: function() {},
+          off: function() {},
+          setColor: function() {},
+          setVisitorData: function() {},
+          isReady: false
+        };
+
+        window.addEventListener('error', function(e) {
+          if (e && e.target && e.target.tagName === 'SCRIPT' && e.target.src) {
+            var src = String(e.target.src);
+            if (src.indexOf('tidio.co') !== -1 || src.indexOf('analytics') !== -1 || src.indexOf('googletagmanager') !== -1 || src.indexOf('facebook') !== -1) {
+              if (typeof e.preventDefault === 'function') e.preventDefault();
+              if (typeof e.stopPropagation === 'function') e.stopPropagation();
+              return true;
+            }
+          }
+        }, true);
+      })();
+    </script>
+
+    <!-- External Script Resource Optimization & Tidio Safe Background Loader -->
+    <link rel="dns-prefetch" href="https://code.tidio.co" />
+    <script>
+      (function() {
+        try {
+          var origWarn = console.warn;
+          var benignWarnings = [
+            'Permissions policy violation',
+            'No ID or name found in config',
+            'preloaded using link preload but not used',
+            'code.tidio.co/fonts'
+          ];
+          console.warn = function() {
+            var msg = Array.prototype.slice.call(arguments).map(function(item) { return String(item); }).join(' ');
+            for (var i = 0; i < benignWarnings.length; i++) {
+              if (msg.indexOf(benignWarnings[i]) !== -1) return;
+            }
+            return origWarn.apply(console, arguments);
+          };
+        } catch (_) {}
+
+        function hideTidioLauncher() {
+          try {
+            if (window.tidioChatApi) {
+              window.tidioChatApi.hide();
+              window.tidioChatApi.on('close', function() {
+                try {
+                  document.body.classList.remove('tidio-chat-visible');
+                  window.tidioChatApi.hide();
+                } catch (_) {}
+              });
+            }
+          } catch (_) {}
+        }
+
+        if (window.tidioChatApi && window.tidioChatApi.isReady) {
+          hideTidioLauncher();
+        } else {
+          document.addEventListener('tidioChat-ready', hideTidioLauncher);
+        }
+
+        var loadTidioScript = function() {
+          if (document.querySelector('script[src*="tidio.co"]')) return;
+          var s = document.createElement('script');
+          s.src = '//code.tidio.co/rhikfdzcdjdqjewrch3mzvppdtksokyc.js';
+          s.async = true;
+          document.head.appendChild(s);
+        };
+
+        if (document.readyState === 'complete') {
+          setTimeout(loadTidioScript, 1500);
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(loadTidioScript, 1500);
+          });
+        }
+      })();
+    </script>
+    
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+    <!-- Google Maps API -->
+    <script>
+      window.initMap = window.initMap || function() {
+        if (typeof window.__googleMapsLoadedCallback === 'function') {
+          try { window.__googleMapsLoadedCallback(); } catch (e) {}
+        }
+      };
+      window.gm_authFailure = function() {
+        window.__googleMapsAuthFailed = true;
+      };
+
+      (function() {
+        var gKey = (window.__APP_CONFIG__ && window.__APP_CONFIG__.googleMapsApiKey) || '';
+        if (gKey && gKey !== 'YOUR_API_KEY') {
+          var s = document.createElement('script');
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(gKey) + '&libraries=places&callback=initMap';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        } else {
+          window.__googleMapsAuthFailed = true;
+        }
+      })();
+    </script>
+  </head>
+  <body class="text-gray-900 bg-[#faf9f6] m-0 p-0">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
